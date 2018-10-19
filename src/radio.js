@@ -3,8 +3,10 @@ import Music from "./music";
 const musicsSettings = [
   {path : 'radio_star', frequency : [88,5]}
 ]
+
 export default class Radio {
   constructor() {
+    this.display = document.getElementById('#radio-display')
     this.on = false
     this.current = 0
     this.frequency = [87,5] /* max 108 0 */
@@ -16,27 +18,24 @@ export default class Radio {
 
     window._radio_next = () => {
       this.current++
+      this.switchFrequency()
     }
 
     window._radio_prev = () => {
       this.current--
     }
-
   }
 
-
-
-  pause() {
-    this.off = true
-    this.currentMusic.pause()
-  }
 
   switchFrequency() {
-
+    this.currentMusic = this.musics[this.current]
+    this.frequency = this.currentMusic.frequency
+    this.play()
   }
 
   play() {
-    this.on = true
     this.currentMusic.play()
+
+    this.display.innerHTML = `<div>${this.frequency[0]}.${this.frequency[1]}</div>`
   }
 }
