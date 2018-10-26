@@ -23,7 +23,7 @@ const showScene = (img) => {
     }
     return `<area shape="rect" coords="${shape.coords.join(',')}" href="${method}">`
   })
-  displayHandle.innerHTML = `<img class="display-pic" src="/pictures/${img.fileName}" usemap="#ima1"><map name="ima1">${area.join('')}</map>`
+  displayHandle.innerHTML = `<img class="display-pic" src="./pictures/${img.fileName}" usemap="#ima1"><map name="ima1">${area.join('')}</map>`
 }
 
 window._scene = (scene) => {
