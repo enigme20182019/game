@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'lcd';
+  src: url('lcd.woff') format('woff'), /* Super Modern Browsers */
+       url('./lcd.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 BODY {
+  font-family: 'lcd', Fallback, sans-serif;
   background: #020406;
 }
 
@@ -11,6 +18,23 @@ BODY {
   position: absolute;
   left: calc(100vw / 2 - 400px);
   top: calc(100vh / 2 - 300px);
+}
+
+#radio-display {
+  margin: 363px 260px;
+  display: none;
+  position: absolute;
+  left: calc(100vw / 2 - 400px);
+  top: calc(100vh / 2 - 300px);
+  width: 268px;
+  height: 121px;
+  background: #3a2103;
+  color: white;
+  /* display: inline-block; */
+  text-align: center;
+  /* height: 120px; */
+  line-height: 112px;
+  font-size: 30px;
 }
 
 .tv-pic {

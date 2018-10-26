@@ -7,7 +7,7 @@ const musicsSettings = [
 
 export default class Radio {
   constructor() {
-    this.display = document.getElementById('#radio-display')
+    this.display = document.getElementById('radio-display')
     this.on = false
     this.current = 0
     this.frequency = [87,5] /* max 108 0 */
@@ -23,12 +23,14 @@ export default class Radio {
 
     window._radio_prev = () => {
       this.current = Math.abs((this.current-1) % musicsSettings.length)
+      this.switchFrequency()
     }
   }
 
   switchFrequency() {
+    this.display.style.display = 'block'
     this.currentMusic = this.musics[this.current]
-    this.frequency = this.currentMusic.frequency
+    this.frequency = musicsSettings[this.current].frequency
     this.play()
   }
 
