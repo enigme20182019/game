@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'lcd';
-  src: url('lcd.woff') format('woff'), /* Super Modern Browsers */
+  src: url('./lcd.woff') format('woff'), /* Super Modern Browsers */
        url('./lcd.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
