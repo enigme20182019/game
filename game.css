@@ -4,4 +4,30 @@ BODY {
 
 #display {
   margin: auto;
+  position: relative;
+}
+
+#video-display {
+  position: absolute;
+  left: calc(100vw / 2 - 400px);
+  top: calc(100vh / 2 - 300px);
+}
+
+.tv-pic {
+  margin: 133px 0 0 180px;
+  width: 400px;
+  height: 300px;
+  display: block;
+  background-size: cover;
+
+}
+
+
+.display-pic {
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  display: block;
+  margin-top: calc(100vh / 2 - 300px);
+  background-size: cover;
 }

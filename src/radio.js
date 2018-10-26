@@ -1,7 +1,8 @@
 import Music from "./music";
 
 const musicsSettings = [
-  {path : 'radio_star', frequency : [88,5]}
+  {path : 'brass.mp3', frequency : [88,5]},
+  {path : 'white.ogg', frequency : [90,2]}
 ]
 
 export default class Radio {
@@ -11,21 +12,19 @@ export default class Radio {
     this.current = 0
     this.frequency = [87,5] /* max 108 0 */
     this.musics = musicsSettings.map((musicPath) => {
-      return new Music(musicPath)
+      return new Music(musicPath.path)
     })
+
     this.currentMusic = this.musics[this.current]
-
-
     window._radio_next = () => {
-      this.current++
+      this.current = (this.current+1) % musicsSettings.length
       this.switchFrequency()
     }
 
     window._radio_prev = () => {
-      this.current--
+      this.current = Math.abs((this.current-1) % musicsSettings.length)
     }
   }
-
 
   switchFrequency() {
     this.currentMusic = this.musics[this.current]
@@ -35,7 +34,6 @@ export default class Radio {
 
   play() {
     this.currentMusic.play()
-
     this.display.innerHTML = `<div>${this.frequency[0]}.${this.frequency[1]}</div>`
   }
 }

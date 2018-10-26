@@ -1,30 +1,34 @@
 export default class Music {
   constructor(source) {
-    this.source=source;
-    this.volume=100;
-    this.finish=false;
-
-    this.sonDomHandle=document.createElement("embed");
-    this.sonDomHandle.setAttribute("src",this.source);
-    this.sonDomHandle.setAttribute("hidden","true");
-    this.sonDomHandle.setAttribute("volume",this.volume.toString());
-    this.sonDomHandle.setAttribute("autostart","false");
-    this.sonDomHandle.setAttribute("loop",'false');
-
-    document.body.appendChild(this.sonDomHandle);
+    this.source = source
+    this.context = new AudioContext();
   }
 
-  pause() {
-    this.sonDomHandle.pause()
+
+  async play() {
+    this.load()
+    let source = this.context.createBufferSource(); // creates a sound source
+    source.buffer = buffer;                    // tell the source which sound to play
+    source.connect(this.context.destination);       // connect the source to the context's destination (the speakers)
+    source.start(0);
   }
 
-  play() {
-    if(this.finish)return false;
-    this.sonDomHandle.play()
+  async load() {
+    return new Promise((resolve) => {
+
+      let request = new XMLHttpRequest();
+      request.open('GET', `/sounds/${this.source}`, true);
+      request.responseType = 'arraybuffer';
+
+      // Decode asynchronously
+      request.onload = function() {
+        this.context.decodeAudioData(request.response, (buffer) => {
+          resolve(buffer)
+        }, onError);
+      }
+      request.send();
+    })
+
   }
 
-  remove () {
-    document.body.removeChild(this.sonDomHandle);
-    this.finish=true;
-  }
 }
