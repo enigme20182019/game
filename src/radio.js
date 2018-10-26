@@ -29,6 +29,7 @@ export default class Radio {
 
   switchFrequency() {
     this.display.style.display = 'block'
+    this.currentMusic.stop()
     this.currentMusic = this.musics[this.current]
     this.frequency = musicsSettings[this.current].frequency
     this.play()

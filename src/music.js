@@ -1,34 +1,51 @@
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
 export default class Music {
-  constructor(source) {
-    this.source = source
-    this.context = new AudioContext();
+  constructor(sourceUri) {
+    this.sourceUri = sourceUri
+    this.context = new AudioContext()
+    this.source = this.context.createBufferSource()
+    this.playing = false
+    this.loaded = false
+  }
+
+  stop() {
+    if(this.playing) {
+      this.source.stop(0)
+      this.playing = false
+    }
   }
 
 
   async play() {
-    this.load()
-    let source = this.context.createBufferSource(); // creates a sound source
-    source.buffer = buffer;                    // tell the source which sound to play
-    source.connect(this.context.destination);       // connect the source to the context's destination (the speakers)
-    source.start(0);
+    if(this.loaded === false) {
+      this.playing = true
+      this.source.buffer = await this.load()                // tell the source which sound to play
+      this.source.connect(this.context.destination)         // connect the source to the context's destination (the speakers)
+    }
+    this.source.start(0);
   }
 
   async load() {
     return new Promise((resolve) => {
 
       let request = new XMLHttpRequest();
-      request.open('GET', `/sounds/${this.source}`, true);
+      request.open('GET', `/sounds/${this.sourceUri}`, true);
       request.responseType = 'arraybuffer';
 
       // Decode asynchronously
-      request.onload = function() {
+      request.onload = () => {
+        this.loaded = true
         this.context.decodeAudioData(request.response, (buffer) => {
           resolve(buffer)
-        }, onError);
+        }, this.onError);
       }
       request.send();
     })
+  }
 
+  onError(e) {
+    console.error(e)
   }
 
 }
