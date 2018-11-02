@@ -25,6 +25,7 @@ export default class Music {
   }
 
   async load() {
+    document.querySelector('.loading').style.display = 'block'
     return new Promise((resolve) => {
 
       let request = new XMLHttpRequest();
@@ -33,6 +34,8 @@ export default class Music {
 
       // Decode asynchronously
       request.onload = () => {
+        document.querySelector('.loading').style.display = 'none'
+
         this.loaded = true
         this.context.decodeAudioData(request.response, (buffer) => {
           resolve(buffer)
@@ -41,9 +44,9 @@ export default class Music {
       request.send();
     })
   }
-
   onError(e) {
     console.error(e)
   }
+
 
 }

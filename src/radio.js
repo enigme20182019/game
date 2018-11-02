@@ -51,7 +51,9 @@ export default class Radio {
     }
 
     window._card = (i) => {
-      this.currentMusic.stop()
+      if(this.currentMusic)
+        this.currentMusic.stop()
+
       this.currentMusic = this.cardsMusics[i]
       this.currentMusic.play()
     }

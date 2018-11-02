@@ -37,6 +37,18 @@ BODY {
   font-size: 30px;
 }
 
+.loading {
+  display: none;
+  position: absolute;
+  left : calc(100vw / 2 - 40px);
+  top : calc(50vh - 10px);
+  border-radius: 10px;
+  background: rgba(0,0,0,.4);
+  color : #fff;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
 .tv-pic {
   margin: 133px 0 0 180px;
   width: 400px;
@@ -46,6 +58,18 @@ BODY {
 
 }
 
+.back {
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+  left: calc(100vw / 2 - 400px);
+  background: #2b81af;
+  width: 800px;
+  cursor: pointer;
+  height: 100px;
+}
 
 .display-pic {
   width: 800px;
