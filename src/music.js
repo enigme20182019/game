@@ -1,9 +1,7 @@
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
 export default class Music {
   constructor(sourceUri) {
     this.sourceUri = sourceUri
-    this.context = new AudioContext()
+    this.context = new (window.AudioContext || window.webkitAudioContext)();
     this.source = this.context.createBufferSource()
     this.playing = false
     this.loaded = false
@@ -30,7 +28,7 @@ export default class Music {
     return new Promise((resolve) => {
 
       let request = new XMLHttpRequest();
-      request.open('GET', `/sounds/${this.sourceUri}`, true);
+      request.open('GET', `/sounds/${this.sourceUri}.mp3`, true);
       request.responseType = 'arraybuffer';
 
       // Decode asynchronously

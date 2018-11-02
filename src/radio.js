@@ -1,8 +1,25 @@
 import Music from "./music";
 
 const musicsSettings = [
-  {path : 'brass.mp3', frequency : [88,5]},
-  {path : 'white.ogg', frequency : [90,2]}
+  {path : 'radio/aime_paris_mai', frequency : [88,5]},
+  {path : 'radio/au_printemps', frequency : [90,2]}
+]
+
+
+const cardSettings = [
+  {path : 'cards/aime_paris_mai'},
+  {path : 'cards/au_printemps'},
+  {path : 'cards/celine'},
+  {path : 'cards/cro_magnon'},
+  {path : 'cards/mon_mec_a_moi'},
+  {path : 'cards/paris_mai'},
+  {path : 'cards/quand_reviendras_tu'},
+  {path : 'cards/suis_un_homme'},
+  {path : 'cards/suis_venu_te_dire'},
+  {path : 'cards/mon_ptit_loup'},
+  {path : 'cards/pardonne_moi'},
+  {path : 'cards/voulez_vous_danser'},
+
 ]
 
 export default class Radio {
@@ -15,15 +32,28 @@ export default class Radio {
       return new Music(musicPath.path)
     })
 
+    this.cardsMusics = cardSettings.map((musicPath) => {
+      return new Music(musicPath.path)
+    })
+
     this.currentMusic = this.musics[this.current]
     window._radio_next = () => {
       this.current = (this.current+1) % musicsSettings.length
       this.switchFrequency()
     }
 
-    window._radio_prev = () => {
-      this.current = Math.abs((this.current-1) % musicsSettings.length)
+    window._radio_preview = () => {
+      this.current = (this.current-1) % musicsSettings.length
+      if(this.current === -1) {
+        this.current = musicsSettings.length - 1
+      }
       this.switchFrequency()
+    }
+
+    window._card = (i) => {
+      this.currentMusic.stop()
+      this.currentMusic = this.cardsMusics[i]
+      this.currentMusic.play()
     }
   }
 
