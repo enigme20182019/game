@@ -6,11 +6,11 @@ export default class Music {
     this.sourceUri = sourceUri
     this.source = context.createBufferSource()
     this.playing = false
-    this.loaded = false
   }
 
   stop() {
     if(this.playing) {
+      console.log('stop')
       this.source.stop()
       this.playing = false
     }
@@ -18,11 +18,11 @@ export default class Music {
 
 
   async play() {
-    if(this.loaded === false) {
-      this.playing = true
-      this.source.buffer = await this.load()                // tell the source which sound to play
-      this.source.connect(context.destination)         // connect the source to the context's destination (the speakers)
-    }
+    this.source = context.createBufferSource()
+    this.playing = true
+    this.source.buffer = await this.load()                // tell the source which sound to play
+    this.source.connect(context.destination)         // connect the source to the context's destination (the speakers)
+    console.log('start')
     this.source.start(0);
   }
 
@@ -38,7 +38,6 @@ export default class Music {
       request.onload = () => {
         document.querySelector('.loading').style.display = 'none'
 
-        this.loaded = true
         context.decodeAudioData(request.response, (buffer) => {
           resolve(buffer)
         }, this.onError);
