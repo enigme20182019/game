@@ -4,8 +4,6 @@ const musicsSettings = [
   {path : 'radio/aime_paris_mai', frequency : [88,5]},
   {path : 'radio/au_printemps', frequency : [90,2]}
 ]
-
-
 const cardSettings = [
   {path : 'cards/aime_paris_mai'},
   {path : 'cards/au_printemps'},
@@ -19,7 +17,6 @@ const cardSettings = [
   {path : 'cards/mon_ptit_loup'},
   {path : 'cards/pardonne_moi'},
   {path : 'cards/voulez_vous_danser'},
-
 ]
 
 export default class Radio {
@@ -73,6 +70,8 @@ export default class Radio {
   }
 
   clear() {
+    if(this.currentMusic)
+      this.currentMusic.stop()
     this.display.innerHTML = ''
   }
 }
