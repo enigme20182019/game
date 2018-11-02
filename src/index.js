@@ -27,6 +27,8 @@ const showScene = (img) => {
 }
 
 window._scene = (scene) => {
+  radio.clear()
+  tv.clear()
   let newScene = imgDefs.find((imgDef) => {
     return imgDef.scene === scene
   })

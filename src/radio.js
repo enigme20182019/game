@@ -71,4 +71,8 @@ export default class Radio {
     this.currentMusic.play()
     this.display.innerHTML = `<div>${this.frequency[0]}.${this.frequency[1]}</div>`
   }
+
+  clear() {
+    this.display.innerHTML = ''
+  }
 }

@@ -28,6 +28,10 @@ export default class Tv {
     this.up()
   }
 
+  clear() {
+    this.c.innerHTML=''
+  }
+
   up() {
     this.c.innerHTML=`<div class="tv-pic" style="background-image: url('./pictures/tv/${this.images[this.current]}');"></div>`
   }
