@@ -31,14 +31,14 @@ export default class Music {
     return new Promise((resolve) => {
 
       let request = new XMLHttpRequest();
-      request.open('GET', `/sounds/${this.sourceUri}.mp3`, true);
+      request.open('GET', `./sounds/${this.sourceUri}.mp3`, true);
       request.responseType = 'arraybuffer';
 
-      // Decode asynchronously
       request.onload = () => {
-        document.querySelector('.loading').style.display = 'none'
 
         context.decodeAudioData(request.response, (buffer) => {
+          document.querySelector('.loading').style.display = 'none'
+
           resolve(buffer)
         }, this.onError);
       }

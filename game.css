@@ -55,7 +55,7 @@ BODY {
   height: 300px;
   display: block;
   background-size: cover;
-
+  -webkit-mask-image: url(./pictures/tv/tvmask.png);
 }
 
 .back {

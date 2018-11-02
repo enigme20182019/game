@@ -1,8 +1,21 @@
 import Music from "./music";
 
 const musicsSettings = [
-  {name : 'radio/aime_paris_mai', frequency : [88,5]},
-  {name : 'radio/au_printemps', frequency : [90,2]}
+  {name : 'Musiques', frequency : [91,2]},
+  {name : 'Classique', frequency : [91,5]},
+  {name : 'Nostalgie', frequency : [91,8]},
+  {name : 'Rire et chansons', frequency : [93,1]},
+  {name : 'TSF Jazz', frequency : [93,7]},
+  {name : 'Europe 1', frequency : [93,8]},
+  {name : 'Dijon', frequency : [99,3]},
+  {name : 'RFI', frequency : [99,8]},
+  {name : 'NRJ', frequency : [104,1]},
+  {name : 'Inter', frequency : [104,5]},
+  {name : 'Culture', frequency : [104,7]},
+  {name : 'RMC', frequency : [107,3]},
+  {name : 'Autoroute', frequency : [107,7]},
+  {name : 'Skyrock', frequency : [108,1]},
+  {name : 'Info', frequency : [108,2]},
 ]
 const cardSettings = [
   {path : 'cards/aime_paris_mai'},
