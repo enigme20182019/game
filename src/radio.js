@@ -70,5 +70,6 @@ export default class Radio {
     if(this.currentMusic)
       this.currentMusic.stop()
     this.display.innerHTML = ''
+    this.display.style.display = 'none'
   }
 }

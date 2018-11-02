@@ -11,7 +11,7 @@ export default class Music {
 
   stop() {
     if(this.playing) {
-      this.source.stop(0)
+      this.source.stop()
       this.playing = false
     }
   }
