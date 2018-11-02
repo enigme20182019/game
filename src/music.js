@@ -1,8 +1,10 @@
+const context = new (window.AudioContext || window.webkitAudioContext)();
+
+
 export default class Music {
   constructor(sourceUri) {
     this.sourceUri = sourceUri
-    this.context = new (window.AudioContext || window.webkitAudioContext)();
-    this.source = this.context.createBufferSource()
+    this.source = context.createBufferSource()
     this.playing = false
     this.loaded = false
   }
@@ -19,7 +21,7 @@ export default class Music {
     if(this.loaded === false) {
       this.playing = true
       this.source.buffer = await this.load()                // tell the source which sound to play
-      this.source.connect(this.context.destination)         // connect the source to the context's destination (the speakers)
+      this.source.connect(context.destination)         // connect the source to the context's destination (the speakers)
     }
     this.source.start(0);
   }
@@ -37,7 +39,7 @@ export default class Music {
         document.querySelector('.loading').style.display = 'none'
 
         this.loaded = true
-        this.context.decodeAudioData(request.response, (buffer) => {
+        context.decodeAudioData(request.response, (buffer) => {
           resolve(buffer)
         }, this.onError);
       }
