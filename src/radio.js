@@ -1,8 +1,8 @@
 import Music from "./music";
 
 const musicsSettings = [
-  {path : 'radio/aime_paris_mai', frequency : [88,5]},
-  {path : 'radio/au_printemps', frequency : [90,2]}
+  {name : 'radio/aime_paris_mai', frequency : [88,5]},
+  {name : 'radio/au_printemps', frequency : [90,2]}
 ]
 const cardSettings = [
   {path : 'cards/aime_paris_mai'},
@@ -25,15 +25,12 @@ export default class Radio {
     this.on = false
     this.current = 0
     this.frequency = [87,5] /* max 108 0 */
-    this.musics = musicsSettings.map((musicPath) => {
-      return new Music(musicPath.path)
-    })
+
 
     this.cardsMusics = cardSettings.map((musicPath) => {
       return new Music(musicPath.path)
     })
 
-    this.currentMusic = this.musics[this.current]
     window._radio_next = () => {
       this.current = (this.current+1) % musicsSettings.length
       this.switchFrequency()
@@ -58,15 +55,15 @@ export default class Radio {
 
   switchFrequency() {
     this.display.style.display = 'block'
-    this.currentMusic.stop()
-    this.currentMusic = this.musics[this.current]
+    if(this.currentMusic)
+      this.currentMusic.stop()
     this.frequency = musicsSettings[this.current].frequency
+    this.name = musicsSettings[this.current].name
     this.play()
   }
 
   play() {
-    this.currentMusic.play()
-    this.display.innerHTML = `<div>${this.frequency[0]}.${this.frequency[1]}</div>`
+    this.display.innerHTML = `<div>${this.frequency[0]}.${this.frequency[1]}<br>${this.name}</div>`
   }
 
   clear() {
