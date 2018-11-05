@@ -5,7 +5,7 @@ export default class Tv {
     this.c = document.getElementById('video-display')
     this.current = 0
 
-    this.images = ['11.jpg', '7.jpg', '5.jpg', '9.jpg', '10.jpg', '1.jpg', '3.jpg', '8.jpg', '4.jpg', '6.jpg', '2.jpg', '12.jpg']
+    this.images = ['11.png', '7.png', '5.png', '9.png', '10.png', '1.png', '3.png', '8.png', '4.png', '6.png', '2.png', '12.png']
 
 
     window._tv_next = () => {
