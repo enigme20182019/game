@@ -1,5 +1,5 @@
 export default [
-  {scene : 'home',fileName : 'salon.jpg', shapes : [{coords : [310,138,455,300], transition : 'tv'}, {coords : [126,110,262,255], transition : 'radio'}, {coords : [490,141,590,241], transition : 'card1'}, {coords : [605,141,705,241], transition : 'card2'}]},
+  {scene : 'home',fileName : 'salon.jpg', shapes : [{coords : [310,138,455,300], transition : 'tv'}, {coords : [126,110,262,255], transition : 'radio'}, {coords : [400,300,500,400], transition : 'card1'}, {coords : [670,240,780,351], transition : 'card2'}]},
   {scene : 'tv',fileName : 'tv.jpg', shapes : [{coords : [574,105,620,225], action : 'javascript:_tv_preview()'}, {coords : [620,105,665,225], action : 'javascript:_tv_next()'}]},
   {scene : 'radio',fileName : 'radio.jpg', shapes : [{coords : [170,330,300,460], action : 'javascript:_radio_preview()'}, {coords : [530,330,660,460], action : 'javascript:_radio_next()'}]},
   {scene : 'card1',fileName : 'card1.jpg', shapes : [
