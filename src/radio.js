@@ -63,6 +63,7 @@ export default class Radio {
 
       this.currentMusic = this.cardsMusics[i]
       this.currentMusic.play()
+      window._play()
     }
   }
 

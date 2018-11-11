@@ -6,6 +6,9 @@ export default class Music {
     this.sourceUri = sourceUri
     this.source = context.createBufferSource()
     this.playing = false
+    window._play = () => {
+      context.resume();
+    }
   }
 
   stop() {
