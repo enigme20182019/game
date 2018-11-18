@@ -23,13 +23,13 @@ const cardSettings = [
   {path : 'cards/yelle'},
   {path : 'cards/zazie_homme'},
   {path : 'cards/juliette_mome'},
-  {path : 'cards/et_moi_et_moi'},
+  {path : 'cards/octobre'},
   {path : 'cards/barabara_dis_quand'},
   {path : 'cards/femme_80'},
   {path : 'cards/tais_toi_creuse'},
-  {path : 'cards/mon_ptit_loup'},
-  {path : 'cards/pardonne_moi'},
-  {path : 'cards/voulez_vous_danser'},
+  {path : 'cards/petit_bout'},
+  {path : 'cards/excuse_moi_partenaire'},
+  {path : 'cards/zorro'},
 ]
 
 export default class Radio {
